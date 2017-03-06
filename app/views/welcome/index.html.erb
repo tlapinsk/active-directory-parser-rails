@@ -1,0 +1,15 @@
+<h1>Input</h1>
+
+<h3>Import Active Directory File</h3>
+<p>Import a CSV file pulled from Active Directory</p>
+<%= form_tag import_welcome_index_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import CSV" %>
+ <% end %>
+
+<h3>Export Report</h3>
+<p>Export Excel report for Data Analysis</p>
+<%= form_tag report_welcome_index_path do %>
+	<%= submit_tag "Create Report" %>
+<% end %>
+
