@@ -20,6 +20,10 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+# gem 'roo' to read and write Excel/CSV files
+# gem 'roo', '~> 2.5', '>= 2.5.1'
+#gem 'axlsx' to write Excel files
+gem 'axlsx', '~> 2.0', '>= 2.0.1'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -31,6 +35,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+
+gem 'bootstrap', '~> 4.0.0.alpha6'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

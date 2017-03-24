@@ -2,14 +2,25 @@
 
 <h3>Import Active Directory File</h3>
 <p>Import a CSV file pulled from Active Directory</p>
-<%= form_tag import_welcome_index_path, multipart: true do %>
+<form class="form-horizontal">
+	<%= form_tag import_welcome_index_path, multipart: true do %>
   <%= file_field_tag :file %>
-  <%= submit_tag "Import CSV" %>
+  <div class="form-group">
+  	 <div class="col-sm-offset-2 col-sm-10">
+  	 	<%= submit_tag "Import CSV" %>
+  	 </div>
+  </div>
  <% end %>
+</form>
+
 
 <h3>Export Report</h3>
 <p>Export Excel report for Data Analysis</p>
 <%= form_tag report_welcome_index_path do %>
+	<%= radio_button_tag(:output_format, "CSV", false) %>
+	<%= label_tag(:output_csv, "CSV") %>
+	<%= radio_button_tag(:output_format, "Excel", true) %>
+	<%= label_tag(:output_excel, "Excel") %>
 	<%= submit_tag "Create Report" %>
 <% end %>
 
