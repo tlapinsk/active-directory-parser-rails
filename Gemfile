@@ -24,6 +24,8 @@ gem 'coffee-rails', '~> 4.2'
 # gem 'roo', '~> 2.5', '>= 2.5.1'
 #gem 'axlsx' to write Excel files
 gem 'axlsx', '~> 2.0', '>= 2.0.1'
+# User FFaker to populate the database with test data
+gem 'ffaker', '~> 2.2'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
