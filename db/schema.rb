@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170406024332) do
+ActiveRecord::Schema.define(version: 20170305202212) do
 
   create_table "groups", force: :cascade do |t|
     t.string   "group"
@@ -25,23 +25,22 @@ ActiveRecord::Schema.define(version: 20170406024332) do
 
   create_table "jobs", force: :cascade do |t|
     t.string   "title"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
-    t.boolean  "include_in_report", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "fname"
+    t.string   "lname"
     t.string   "title"
     t.string   "email"
-    t.integer  "shoretel",   limit: 8
-    t.integer  "cell",       limit: 8
-    t.integer  "fax",        limit: 8
+    t.string   "shoretel"
+    t.string   "cell"
+    t.string   "fax"
     t.string   "group"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
     t.integer  "job_id"
-    t.string   "lname"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
