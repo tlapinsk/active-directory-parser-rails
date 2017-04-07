@@ -26,3 +26,10 @@
 	<%= submit_tag "Create Report" %>
 <% end %>
 
+<br><h3>Create CSV</h3>
+<p>Export a CSV with test data that can be used to test seeding the User table. Test importing the code by inputing the CSV above!</p>
+<%= form_tag testcsv_welcome_index_path do %>
+	<%= radio_button_tag(:output_format, "Test_CSV", true) %>
+	<%= label_tag(:output_csv, "CSV") %>
+	<%= submit_tag "Create CSV" %>
+<% end %>

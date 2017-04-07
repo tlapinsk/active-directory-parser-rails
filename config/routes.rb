@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   	collection do
   		post 'import'
   		post 'report'
+      post 'testcsv'
   	end
   end
 
