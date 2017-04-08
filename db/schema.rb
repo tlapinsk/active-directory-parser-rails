@@ -30,8 +30,7 @@ ActiveRecord::Schema.define(version: 20170305202212) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "fname"
-    t.string   "lname"
+    t.string   "name"
     t.string   "title"
     t.string   "email"
     t.string   "shoretel"

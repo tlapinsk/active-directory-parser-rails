@@ -17,7 +17,9 @@ class WelcomeController < ApplicationController
   # Function to map all imported data to the correct tables
   def ad_upload(file)
     csv_text = File.read(file.path)
+    puts "File read"
     csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+    puts "File parsed"
     csv.each do |row|
       next if (row['Name'].nil? || row['Job'].nil?)
 
@@ -141,7 +143,7 @@ class WelcomeController < ApplicationController
   def export_test_data_csv
     header = ["Name","Job","Email","ShoreTel","Cell","Fax","MemberOf"]
     high_ranking = ["Chief Information Officer", "Chief Financial Officer", "Senior Director, IT", "Senior Director, Marketing", "Senior Director, Business Applications", "Senior Director, User Experience & Design", "Chief Executive Officer", "Director, Product Management", "Chief Operations Officer", "VP, Corporate Development", "EVP, Market Development", "VP, Finance", "Chief Marketing Officer"]
-    plebs = ["Business Development Manager", "System Administrator", "Senior Web Developer", "Junior Web Developer", "Business Analyst", "Payroll Administrator", "Human Resources Assistant", "Executive Assistant", "Recruiter", "Accountant", "IT Support Manager", "Business Intelligence Analyst", "IT Project Manager", "Product Owner", "Product Manager", "Analyst", "User Experience Designer", "User Interface Designer", "Business Development Analyst", "Customer Support Representative", "Marketing Manager", "Account Manager", "Accounts Payable Specialist", "Administrative Assistant", "Associate Project Manager", "Area Sales Manager", "Business Systems Analyst I", "Business Systems Analyst II", "Business Systems Architect", "Buyer", "Customer Experience Manager", "Customer Experience Lead", "Division Sales Manager", "Retail Manager", "Driver", "Facilities Assistant", "Supply Manager", "Financial Analyst", "Human Resources Generalist I", "Human Resources Generalist II", "Human Resources Coordinator", "Inventory Analyst", "Janitor", "Management Trainee", "Inventory Clerk", "Maintenance Supervisor", "Plant Manager", "Inside Sales Manager", "Outside Sales Manager", "Sanitation Manager", "Supply Chain Manager", "Sales Analytics Manager", "QA Manager", "Project Management Manager", "Engineering Manager", "Office Manager", "Manufacturing Coordinator", "Manufacturing Worker", "Manufacturing Operator", "Materials Manager", "Materials Planner", "Mechanic", "Office Administrator", "Personal Assistant", "Project Engineering Manager", "R&D Assistant", "R&D Coordinator", "R&D Product Manager", "Innovation Manager", "Innovation Product Manager", "Innovation Project Manager", "Receptionist", "Regional Sales Manager", "Training Coordinator", "Senior Training Coordintator", "Spokerperson", "PR Manager", "Welder"]
+    low_ranking = ["Business Development Manager", "System Administrator", "Senior Web Developer", "Junior Web Developer", "Business Analyst", "Payroll Administrator", "Human Resources Assistant", "Executive Assistant", "Recruiter", "Accountant", "IT Support Manager", "Business Intelligence Analyst", "IT Project Manager", "Product Owner", "Product Manager", "Analyst", "User Experience Designer", "User Interface Designer", "Business Development Analyst", "Customer Support Representative", "Marketing Manager", "Account Manager", "Accounts Payable Specialist", "Administrative Assistant", "Associate Project Manager", "Area Sales Manager", "Business Systems Analyst I", "Business Systems Analyst II", "Business Systems Architect", "Buyer", "Customer Experience Manager", "Customer Experience Lead", "Division Sales Manager", "Retail Manager", "Driver", "Facilities Assistant", "Supply Manager", "Financial Analyst", "Human Resources Generalist I", "Human Resources Generalist II", "Human Resources Coordinator", "Inventory Analyst", "Janitor", "Management Trainee", "Inventory Clerk", "Maintenance Supervisor", "Plant Manager", "Inside Sales Manager", "Outside Sales Manager", "Sanitation Manager", "Supply Chain Manager", "Sales Analytics Manager", "QA Manager", "Project Management Manager", "Engineering Manager", "Office Manager", "Manufacturing Coordinator", "Manufacturing Worker", "Manufacturing Operator", "Materials Manager", "Materials Planner", "Mechanic", "Office Administrator", "Personal Assistant", "Project Engineering Manager", "R&D Assistant", "R&D Coordinator", "R&D Product Manager", "Innovation Manager", "Innovation Product Manager", "Innovation Project Manager", "Receptionist", "Regional Sales Manager", "Training Coordinator", "Senior Training Coordintator", "Spokerperson", "PR Manager", "Welder"]
     groups = ["Accident Reporting-Utah", "Accident Reporting-San Diego", "Accident Reporting-Boston", "Accounting", "Accounts Payabale", "Accounts Receivable", "Backups", "Change Management", "Concur Corporate", "Concur Users", "Consumer Relations", "Issues", "Engineering-San Diego", "Engineering-Utah", "Engineering-Boston", "Executive Staff", "Inside Sales", "International", "IT", "IT Infrastructure", "IT Security", "IT Steering Committee", "Marketing", "Planning", "New Products", "Ops", "Oracle", "Outside Sales", "Packaging", "Paypal", "Payroll", "QA", "Research and Development", "Innovation", "Safety", "Sourcing", "Staff-All", "Staff-San Diego", "Staff-Utah", "Staff-Boston", "Warehouse", "Debug", "Test", "MySQL DBA", "Dynamix", "Salesforce", "Oracle-BI", "Auditing", "Customer Experience", "Human Resources", "Supply Chain", "Inventory", "Retail-West", "Retail-North", "Retail-South", "Retail-East", "Retail-International", "Oracle Sales", "Oracle Pricing", "Oracle Admin", "Process Engineer", "Product Dev", "Purchasing", "Reports", "Shipping", "System Administrator", "Tax", "User Management", "Employee", "Project Supervisor", "Store-Account", "Store-Accounting Boston", "Store-Accounting Utah", "Store-Accounting San Diego", "Store-Customer Experience", "Store-Consultant", "Store-Databases", "Store-Engineer", "Store-People and Culture", "Store-Main", "Store-Manufacturing", "Store-Payroll", "Store-Planning", "Store-Prod", "Store-Quality Assurance", "Store-Safe", "Store-Warehouse", "VPN", "BI-Warehouse", "BI-Prod", "BI-QA", "BI-Test", "BI-Sales", "BI-Function", "BI-Dashboards", "Trello-Admin", "Trello-Users", "Trello-Consultants", "Google Apps", "Microsoft Office", "MS Project", "Shoretel", "AWS", "AWS-S3", "AWS-Redshift", "Azure Active Directory Admin", "Azure Active Directory User", "Azure Cloud", "Spotify-Enterprise", "Apple Music Enterprise", "Apple iPhone Users", "Apple iPad Users", "Apple Macbook Pro Users", "Apple Macbook Air Users", "Apple Macbook Users", "Apple Mac Pro Users", "Dell Users"]
     date = Date.today.to_s
     file = "Test-CSV-#{date}.csv"
@@ -155,19 +157,19 @@ class WelcomeController < ApplicationController
         shoretel = FFaker::PhoneNumber.short_phone_number
         cell = FFaker::PhoneNumber.short_phone_number
         fax = FFaker::PhoneNumber.short_phone_number
-        memberof = groups.sample(30)
+        memberof = groups.sample(30).join(";")
         csv << [name, h, email, shoretel, cell, fax, memberof]
       end
       1487.times do 
         fname = FFaker::Name.first_name
         lname = FFaker::Name.last_name
         name = fname + " " + lname
-        h = plebs.sample
+        h = low_ranking.sample
         email = fname.downcase + "." + lname.downcase + "@example.com"
         shoretel = FFaker::PhoneNumber.short_phone_number
         cell = FFaker::PhoneNumber.short_phone_number
         fax = FFaker::PhoneNumber.short_phone_number
-        memberof = groups.sample(30)
+        memberof = groups.sample(30).join(";")
         csv << [name, h, email, shoretel, cell, fax, memberof]
       end
     end
