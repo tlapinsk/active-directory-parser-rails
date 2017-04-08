@@ -151,8 +151,19 @@ class WelcomeController < ApplicationController
         fname = FFaker::Name.first_name
         lname = FFaker::Name.last_name
         name = fname + " " + lname
-        # plebs.each do |p|
-        email = fname + "." + lname + "@example.com"
+        email = fname.downcase + "." + lname.downcase + "@example.com"
+        shoretel = FFaker::PhoneNumber.short_phone_number
+        cell = FFaker::PhoneNumber.short_phone_number
+        fax = FFaker::PhoneNumber.short_phone_number
+        memberof = groups.sample(30)
+        csv << [name, h, email, shoretel, cell, fax, memberof]
+      end
+      1487.times do 
+        fname = FFaker::Name.first_name
+        lname = FFaker::Name.last_name
+        name = fname + " " + lname
+        h = plebs.sample
+        email = fname.downcase + "." + lname.downcase + "@example.com"
         shoretel = FFaker::PhoneNumber.short_phone_number
         cell = FFaker::PhoneNumber.short_phone_number
         fax = FFaker::PhoneNumber.short_phone_number
