@@ -1,19 +1,23 @@
-<br><h3>Import Active Directory File</h3>
-	<p>Use PowerShell and the following script to pull the correctly formatted data from Active Directory:</p>
+<br>
+<h3>Import Active Directory CSV File</h3>
+	<p> You have two options to test out the AD import functionality:
+	<br> 1. Create a CSV (below)
+	<br> 2. Use the Active Directory for PowerShell module and the following script to pull the correctly formatted data from your Active Directory:</p>
 	<code>
 		Get-ADUser -Filter * -Properties * | Select-Object -Property Name, Title, EmailAddress, TelephoneNumber, Mobile, Fax, @{n='MemberOf'; e= { ( $_.memberof | % { (Get-ADObject $_).Name }) -join ";" }} | Sort-Object -Property Name | export-CSV C:\temp\Upload_to_RoleMapping.csv
-	</code>
-<p>First, find the CSV file in C:\temp on the Windows server. Then select Choose File' to load the CSV and then 'Import CSV' to complete the import.</p>
-	<%= form_tag import_welcome_index_path, multipart: true do %>
-		<%= file_field_tag :file %>
-		<div class="form-group">
-			<br>
-			<div class="col-sm-offset-2">
-				<%= submit_tag "Import CSV" %>
+	</code><br>
+
+	<br><p>Select 'Choose File' to load the CSV and then 'Import CSV' to complete the import.</p>
+		<%= form_tag import_welcome_index_path, multipart: true do %>
+			<%= file_field_tag :file %>
+			<div class="form-group">
+				<br>
+				<div class="col-sm-offset-2">
+					<%= submit_tag "Import CSV" %>
+				</div>
 			</div>
-		</div>
-	<% end %>
-	
+		<% end %>
+
 <br>
 <h3>Export Report</h3>
 	<p>Export the report below:</p>
@@ -26,8 +30,8 @@
 	<% end %>
 
 <br>
-<h3>Create CSV</h3>
-	<p>Export a CSV with test data that can be used to test seeding the User table. Test importing the code by inputing the CSV above!</p>
+<h3>Create Test CSV</h3>
+	<p>Export a CSV with test data that can be used to seed the User table. Import the CSV by using the 'Import Active Directory CSV File' above!</p>
 	<%= form_tag testcsv_welcome_index_path do %>
 		<%= radio_button_tag(:output_format, "Test_CSV", true) %>
 		<%= label_tag(:output_csv, "CSV") %>
