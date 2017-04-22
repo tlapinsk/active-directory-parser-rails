@@ -11,12 +11,16 @@ Rails version: 5.0.2
 
 1. [Download the repository](https://github.com/tlapinsk/rolemapping/archive/master.zip) OR
 
-		$ git clone https://github.com/tlapinsk/rolemapping
+```shell session
+$ git clone https://github.com/tlapinsk/rolemapping
+```
 
 2. At the command prompt
 
-		$ cd rolemapping
-		$ rails s
+```shell session
+$ cd rolemapping
+$ rails s
+```
 
 3. Using a browser, go to http://localhost:3000 and you'll see the application homepage.
 
@@ -85,15 +89,17 @@ I'll help run through an example migration that you can run below:
 3. Open Terminal and run `rails generate migration add_fieldname_to_tablename`
 4. Add the additional column names and types to the migration file (code example below)
 
-		class Lastname < ActiveRecord::Migration[5.0]
-		  def change
-		  	change_table :users do |t|
-		  		t.column :laptop, :string
-		  		t.column :desktop, :string
-		  		t.column :monitor, :string
-		  	end
-		  end
-		end
+```ruby
+class Lastname < ActiveRecord::Migration[5.0]
+  def change
+  	change_table :users do |t|
+  		t.column :laptop, :string
+  		t.column :desktop, :string
+  		t.column :monitor, :string
+  	end
+  end
+end
+```
 
 5. Run `rake db:migrate` to migrate the changes
 6. Check `schema.rb` to ensure the right changes were made
@@ -104,32 +110,34 @@ Next, you'll have to edit `welcome_controller.rb`
 2. Navigate to the `ad_upload(file)` function
 3. Go to the following code
 
-		```ruby
-		user.title = row['Job']
-		user.email = row['Email']
-		user.shoretel = row['ShoreTel']
-		user.cell = row['Cell']
-		user.fax = row['Fax']
-		user.group = row['MemberOf']
-		user.job_id = job.id if !job.nil?
-		user.save!
-		puts "#{user.name} saved"
-		```
+```ruby
+user.title = row['Job']
+user.email = row['Email']
+user.shoretel = row['ShoreTel']
+user.cell = row['Cell']
+user.fax = row['Fax']
+user.group = row['MemberOf']
+user.job_id = job.id if !job.nil?
+user.save!
+puts "#{user.name} saved"
+```
 
 4. Create new `user.NEWCOLUMN = row['NEWCOLUMN']`
 
-		user.title = row['Job']
-		user.email = row['Email']
-		user.shoretel = row['ShoreTel']
-		user.cell = row['Cell']
-		user.fax = row['Fax']
-		user.group = row['MemberOf']
-		user.laptop = row['Laptop']
-		user.desktop = row['Desktop']
-		user.monitor = row['Monitor']
-		user.job_id = job.id if !job.nil?
-		user.save!
-		puts "#{user.name} saved"
+```ruby
+user.title = row['Job']
+user.email = row['Email']
+user.shoretel = row['ShoreTel']
+user.cell = row['Cell']
+user.fax = row['Fax']
+user.group = row['MemberOf']
+user.laptop = row['Laptop']
+user.desktop = row['Desktop']
+user.monitor = row['Monitor']
+user.job_id = job.id if !job.nil?
+user.save!
+puts "#{user.name} saved"
+```
 
 5. Save your project, reboot the app, and load http://localhost:3000
 6. Import your new CSV and debug as necessary
