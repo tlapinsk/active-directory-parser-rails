@@ -104,40 +104,36 @@ Next, you'll have to edit `welcome_controller.rb`
 2. Navigate to the `ad_upload(file)` function
 3. Go to the following code
 
+		```Ruby
 		user.title = row['Job']
-    user.email = row['Email']
-    user.shoretel = row['ShoreTel']
-    user.cell = row['Cell']
-    user.fax = row['Fax']
-    user.group = row['MemberOf']
-    user.job_id = job.id if !job.nil?
-    user.save!
-    puts "#{user.name} saved"
+		user.email = row['Email']
+		user.shoretel = row['ShoreTel']
+		user.cell = row['Cell']
+		user.fax = row['Fax']
+		user.group = row['MemberOf']
+		user.job_id = job.id if !job.nil?
+		user.save!
+		puts "#{user.name} saved"
+		```
 
-4. Create new `user.NEWCOLUMN = row['NEWCOLUMN']
+4. Create new `user.NEWCOLUMN = row['NEWCOLUMN']`
 
 		user.title = row['Job']
-    user.email = row['Email']
-    user.shoretel = row['ShoreTel']
-    user.cell = row['Cell']
-    user.fax = row['Fax']
-    user.group = row['MemberOf']
+		user.email = row['Email']
+		user.shoretel = row['ShoreTel']
+		user.cell = row['Cell']
+		user.fax = row['Fax']
+		user.group = row['MemberOf']
 		user.laptop = row['Laptop']
-    user.desktop = row['Desktop']
-    user.monitor = row['Monitor']
-    user.job_id = job.id if !job.nil?
-    user.save!
-    puts "#{user.name} saved"
+		user.desktop = row['Desktop']
+		user.monitor = row['Monitor']
+		user.job_id = job.id if !job.nil?
+		user.save!
+		puts "#{user.name} saved"
 
 5. Save your project, reboot the app, and load http://localhost:3000
 6. Import your new CSV and debug as necessary
 7. BOOM! You've successfully edited the database schema
-
-
-
-
-
-
 
 
 
