@@ -24,13 +24,13 @@
 	<%= form_tag report_welcome_index_path do %>
 		<%= radio_button_tag(:output_format, "CSV", true) %>
 		<%= label_tag(:output_csv, "CSV") %>
-		<%= radio_button_tag(:output_format, "Excel", false) %>
-		<%= label_tag(:output_excel, "Excel") %>
+<!-- 		<%= radio_button_tag(:output_format, "Excel", false) %>
+		<%= label_tag(:output_excel, "Excel") %> -->
 		<%= submit_tag "Create Report" %>
 	<% end %>
 
 <br>
-<h3>Create Test CSV</h3>
+<h3>Create Test Data</h3>
 	<p>Export a CSV with test data that can be used to seed the User table. Import the CSV by using the 'Import Active Directory CSV File' above!</p>
 	<%= form_tag testcsv_welcome_index_path do %>
 		<%= radio_button_tag(:output_format, "Test_CSV", true) %>
