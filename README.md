@@ -104,17 +104,17 @@ Next, you'll have to edit `welcome_controller.rb`
 2. Navigate to the `ad_upload(file)` function
 3. Go to the following code
 
-		```Ruby
-		user.title = row['Job']
-		user.email = row['Email']
-		user.shoretel = row['ShoreTel']
-		user.cell = row['Cell']
-		user.fax = row['Fax']
-		user.group = row['MemberOf']
-		user.job_id = job.id if !job.nil?
-		user.save!
-		puts "#{user.name} saved"
-		```
+```ruby
+user.title = row['Job']
+user.email = row['Email']
+user.shoretel = row['ShoreTel']
+user.cell = row['Cell']
+user.fax = row['Fax']
+user.group = row['MemberOf']
+user.job_id = job.id if !job.nil?
+user.save!
+puts "#{user.name} saved"
+```
 
 4. Create new `user.NEWCOLUMN = row['NEWCOLUMN']`
 
