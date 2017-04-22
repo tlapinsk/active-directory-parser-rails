@@ -124,47 +124,21 @@ puts "#{user.name} saved"
 
 4. Create new `user.NEWCOLUMN = row['NEWCOLUMN']`
 
-```ruby
-user.title = row['Job']
-user.email = row['Email']
-user.shoretel = row['ShoreTel']
-user.cell = row['Cell']
-user.fax = row['Fax']
-user.group = row['MemberOf']
-user.laptop = row['Laptop']
-user.desktop = row['Desktop']
-user.monitor = row['Monitor']
-user.job_id = job.id if !job.nil?
-user.save!
-puts "#{user.name} saved"
-```
+	```ruby
+	user.title = row['Job']
+	user.email = row['Email']
+	user.shoretel = row['ShoreTel']
+	user.cell = row['Cell']
+	user.fax = row['Fax']
+	user.group = row['MemberOf']
+	user.laptop = row['Laptop']
+	user.desktop = row['Desktop']
+	user.monitor = row['Monitor']
+	user.job_id = job.id if !job.nil?
+	user.save!
+	puts "#{user.name} saved"
+	```
 
 5. Save your project, reboot the app, and load http://localhost:3000
 6. Import your new CSV and debug as necessary
 7. BOOM! You've successfully edited the database schema
-
-
-
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
