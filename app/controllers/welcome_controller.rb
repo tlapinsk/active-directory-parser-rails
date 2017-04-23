@@ -59,44 +59,6 @@ class WelcomeController < ApplicationController
   	end
   end
 
-  # # Export as Excel file function. Not fully finished, but you can fix it up if you want to.
-  # def export_data_excel
-  # 	package = Axlsx::Package.new
-  # 	workbook = package.workbook
-  # 	jobs = Job.all.order(:title).uniq
-  # 	jobs_join = jobs.joins("JOIN users u ON u.job_id = jobs.id")
-
-  # 	workbook.add_worksheet(name: "Sheet 1") do |sheet|
-  # 		sheet.add_row ["Job (Long)","AD","Email","ShoreTel","Cell","Fax","Desktop","Laptop","List of Members"] 
-  # 	end
-  # 	package.serialize("Basic.xlsx")
-
-  # 	# Increment an integer (index) for sheet[1,0]
-  # 	# sheet1 do (excel)
-  # 	# 	# this is where you increment rows
-		# 	# jobs.each do |j|
-  #  #  	emails = jobs_join.where("email IS NOT NULL AND jobs.id = #{j.id}")
-  #  #  	pop_email = emails.count > 0 ? 'x' : ' '
-  #  #  	shoretel = jobs_join.where("shoretel IS NOT NULL AND jobs.id = #{j.id}")
-  #  #  	pop_shoretel = shoretel.count > 0 ? 'x' : ' '
-  #  #  	cell = jobs_join.where("cell IS NOT NULL AND jobs.id = #{j.id}")
-  #  #  	pop_cell = cell.count > 0 ? 'x' : ' '
-  #  #  	fax = jobs_join.where("fax IS NOT NULL AND jobs.id = #{j.id}")
-  #  #  	pop_fax = fax.count > 0 ? 'x' : ' '
-  #  #  	job_users = User.where("`group` IS NOT NULL AND jobs.id = #{j.id}")
-
-  #  #  	# Find the distinct groups for all users with this job_id
-		# 	# sql = "SELECT DISTINCT(g.`group`) from groups g join groups_users gu on gu.group_id=g.id join users u on gu.user_id=u.id and u.job_id=#{j.id}"
-		# 	# groups = ActiveRecord::Base.connection.execute(sql)
-		# 	# # Returning array of hashes
-		# 	# # "[{\"group\"=>\"Concur Business Meals\", 0=>\"Concur Business Meals\"}, {\"group\"=>\"Goals Training Sessions\", 0=>\"Goals Training Sessions\"}, {\"group\"=>\"GoogleAppsEA\", 0=>\"GoogleAppsEA\"}, {\"group\"=>\"Concur Users\", 0=>\"Concur Users\"}, {\"group\"=>\"TurnLink User Group\", 0=>\"TurnLink User Group\"}, {\"group\"=>\"Store-Outside Sales\", 0=>\"Store-Outside Sales\"}, {\"group\"=>\"Store-Sales Mailing List Database RW\", 0=>\"Store-Sales Mailing List Database RW\"}, {\"group\"=>\"Store-Accounting MCB Approvals RW\", 0=>\"Store-Accounting MCB Approvals RW\"}, {\"group\"=>\"Outside Sales\", 0=>\"Outside Sales\"}, {\"group\"=>\"Staff-Remote\", 0=>\"Staff-Remote\"}, {\"group\"=>\"Store-Sales\", 0=>\"Store-Sales\"}, {\"group\"=>\"GoogleApps\", 0=>\"GoogleApps\"}]" 
-		# 	# pop_groups = groups.map(&:values).flatten.uniq #exercise for the reader. Array of group part of the hash to comma separated string
-
-  #  #    excel << [j.title, 'x', pop_email, pop_shoretel, pop_cell, pop_fax, pop_groups]       
-  #  #    # How puts line break here
-  #  #  end
-  # end
-
   # Export as CSV function
   def export_data_csv
   jobs = Job.all.order(:title).uniq
@@ -126,10 +88,48 @@ class WelcomeController < ApplicationController
 			pop_groups = groups.map(&:values).flatten.uniq #exercise for the reader. Array of group part of the hash to comma separated string
 
       csv << [j.title, 'x', pop_email, pop_shoretel, pop_cell, pop_fax, pop_groups]       
-      # How puts line break here
       end
     end
   end
+
+  # # Export as Excel file function. Not fully finished, but you can fix it up if you want to.
+  # def export_data_excel
+  #   package = Axlsx::Package.new
+  #   workbook = package.workbook
+  #   jobs = Job.all.order(:title).uniq
+  #   jobs_join = jobs.joins("JOIN users u ON u.job_id = jobs.id")
+
+  #   workbook.add_worksheet(name: "Sheet 1") do |sheet|
+  #     sheet.add_row ["Job (Long)","AD","Email","ShoreTel","Cell","Fax","Desktop","Laptop","List of Members"] 
+  #   end
+  #   package.serialize("Basic.xlsx")
+
+  #   # Increment an integer (index) for sheet[1,0]
+  #   # sheet1 do (excel)
+  #   #   # this is where you increment rows
+    #   # jobs.each do |j|
+  #  #    emails = jobs_join.where("email IS NOT NULL AND jobs.id = #{j.id}")
+  #  #    pop_email = emails.count > 0 ? 'x' : ' '
+  #  #    shoretel = jobs_join.where("shoretel IS NOT NULL AND jobs.id = #{j.id}")
+  #  #    pop_shoretel = shoretel.count > 0 ? 'x' : ' '
+  #  #    cell = jobs_join.where("cell IS NOT NULL AND jobs.id = #{j.id}")
+  #  #    pop_cell = cell.count > 0 ? 'x' : ' '
+  #  #    fax = jobs_join.where("fax IS NOT NULL AND jobs.id = #{j.id}")
+  #  #    pop_fax = fax.count > 0 ? 'x' : ' '
+  #  #    job_users = User.where("`group` IS NOT NULL AND jobs.id = #{j.id}")
+
+  #  #    # Find the distinct groups for all users with this job_id
+    #   # sql = "SELECT DISTINCT(g.`group`) from groups g join groups_users gu on gu.group_id=g.id join users u on gu.user_id=u.id and u.job_id=#{j.id}"
+    #   # groups = ActiveRecord::Base.connection.execute(sql)
+    #   # # Returning array of hashes
+    #   # # "[{\"group\"=>\"Concur Business Meals\", 0=>\"Concur Business Meals\"}, {\"group\"=>\"Goals Training Sessions\", 0=>\"Goals Training Sessions\"}, {\"group\"=>\"GoogleAppsEA\", 0=>\"GoogleAppsEA\"}, {\"group\"=>\"Concur Users\", 0=>\"Concur Users\"}, {\"group\"=>\"TurnLink User Group\", 0=>\"TurnLink User Group\"}, {\"group\"=>\"Store-Outside Sales\", 0=>\"Store-Outside Sales\"}, {\"group\"=>\"Store-Sales Mailing List Database RW\", 0=>\"Store-Sales Mailing List Database RW\"}, {\"group\"=>\"Store-Accounting MCB Approvals RW\", 0=>\"Store-Accounting MCB Approvals RW\"}, {\"group\"=>\"Outside Sales\", 0=>\"Outside Sales\"}, {\"group\"=>\"Staff-Remote\", 0=>\"Staff-Remote\"}, {\"group\"=>\"Store-Sales\", 0=>\"Store-Sales\"}, {\"group\"=>\"GoogleApps\", 0=>\"GoogleApps\"}]" 
+    #   # pop_groups = groups.map(&:values).flatten.uniq #exercise for the reader. Array of group part of the hash to comma separated string
+
+  #  #    excel << [j.title, 'x', pop_email, pop_shoretel, pop_cell, pop_fax, pop_groups]       
+  #  #    # How puts line break here
+  #  #  end
+  # end
+  
 
   def testcsv
     if params[:output_format] == "Test_CSV"
