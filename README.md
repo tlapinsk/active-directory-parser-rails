@@ -9,13 +9,13 @@ It was built, in part, due to the limitations of Excel and multiple weeks that I
 Ruby version: 2.3.0
 Rails version: 5.0.2
 
-1. [Download the repository](https://github.com/tlapinsk/rolemapping/archive/master.zip) OR open up Terminal
+1. [Download the repository](https://github.com/tlapinsk/rolemapping/archive/master.zip) OR open up Terminal:
 
 	```shell session
 	$ git clone https://github.com/tlapinsk/rolemapping
 	```
 
-2. At the command prompt
+2. At the command prompt:
 
 	```shell session
 	$ cd rolemapping
@@ -48,18 +48,18 @@ This section provides more detailed instructions for the application, including 
 
 ### Customizing 'Create Test Data' Output
 
-First, open up `welcome_controller.rb`
+1. Open up `welcome_controller.rb`
 
-Then, navigate to the `export_test_data_csv` function (last function)
+2. Navigate to the `export_test_data_csv` function (last function).
 
 The following instructions all pertain to the `export_test_data_csv` function.
 
-**Adding additional job titles and groups:**
+**Adding additional job titles and groups**
 Feel free to add additional job titles in the `high_ranking`, `low_ranking`, and `group` arrays.
 
 There are currently 13 high ranking titles, so keep that in mind when editing the `high_ranking` array. 
 
-**Editing CSV file name:**
+**Editing CSV file name**
 Edit the `file` and `date` variables to your liking.
 
 **Total rows output**
@@ -129,7 +129,7 @@ _Note: Check out the [FFaker documentation](https://github.com/ffaker/ffaker) to
 
 Provides instructions for customizing the `Import Active Directory CSV File` feature.
 
-_Note: You might want to edit the Create CSV section before customizing the 'Import' function.
+_Note: You might want to edit the Create CSV section before customizing the 'Import' function._
 
 **Editing the database**
 Depending on your goals, you will need think through the database schema and migrations you will need to run.
@@ -156,7 +156,7 @@ Example migration:
 5. In the Terminal, run `rake db:migrate` to migrate the changes.
 6. Check `schema.rb` to double check your changes.
 
-**Editing the `ad_upload(file)` function
+**Editing the** `ad_upload(file)` **function**
 
 Next, you'll have to edit `welcome_controller.rb`
 
@@ -209,14 +209,14 @@ Provides instructions for customizing the `Export Report` functionality.
 	header = ["Job (Long)","AD","Email","ShoreTel","Cell","Fax","Laptop","Desktop","Monitor","List of Members"]
 	```
 
-4. Edit `date` and `file` variables to your liking
+4. Edit `date` and `file` variables to your liking.
 
 	```ruby
 	date = Date.today.to_s
 	file = "PersonaTemplate-#{date}.csv"
 	```
 
-5. Edit `jobs.each do |j|` loop
+5. Edit `jobs.each do |j|` loop.
 
 	```ruby
 	jobs.each do |j|
@@ -252,7 +252,7 @@ Provides instructions for customizing the `Export Report` functionality.
 
 _Note: The `export_data_excel` function is not working, but feel free to fix it. The [AXLSX documentation](https://github.com/randym/axlsx) should be helpful, so check it out._
 
-If I forgot anything, please let me know. And if you have any questions, you can always email at tim.lapinskas@gmail.com
+If I forgot anything, please let me know. And if you have any questions, you can always email at tim.lapinskas@gmail.com.
 
 
 
