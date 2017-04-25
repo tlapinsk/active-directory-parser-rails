@@ -24,6 +24,7 @@
 	<%= form_tag report_welcome_index_path do %>
 		<%= radio_button_tag(:output_format, "CSV", true) %>
 		<%= label_tag(:output_csv, "CSV") %>
+<!-- 		Uncomment the code below if you fix the export_data_excel function --> 
 <!-- 		<%= radio_button_tag(:output_format, "Excel", false) %>
 		<%= label_tag(:output_excel, "Excel") %> -->
 		<%= submit_tag "Create Report" %>

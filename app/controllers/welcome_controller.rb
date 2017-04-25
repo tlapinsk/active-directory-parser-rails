@@ -129,13 +129,13 @@ class WelcomeController < ApplicationController
   #  #    # How puts line break here
   #  #  end
   # end
-  
+
 
   def testcsv
     if params[:output_format] == "Test_CSV"
       export_test_data_csv
     else 
-      puts "Middle Out"
+      puts "middle out"
     redirect_to root_url, notice: "Test report created!"
     end
   end
