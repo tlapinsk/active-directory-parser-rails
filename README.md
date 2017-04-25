@@ -7,6 +7,7 @@ It was built, in part, due to the limitations of Excel and multiple weeks that I
 ## Getting Started
 
 Ruby version: 2.3.0
+
 Rails version: 5.0.2
 
 1. [Download the repository](https://github.com/tlapinsk/rolemapping/archive/master.zip) OR open up Terminal:
