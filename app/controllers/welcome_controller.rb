@@ -78,6 +78,8 @@ class WelcomeController < ApplicationController
     	pop_cell = cell.count > 0 ? 'x' : ' '
     	fax = jobs_join.where("fax IS NOT NULL AND jobs.id = #{j.id}")
     	pop_fax = fax.count > 0 ? 'x' : ' '
+      pop_desktop = ' '
+      pop_laptop = ' '
     	job_users = User.where("`group` IS NOT NULL AND jobs.id = #{j.id}")
 
     	# Find the distinct groups for all users with this job_id
@@ -87,7 +89,7 @@ class WelcomeController < ApplicationController
 			# "[{\"group\"=>\"Concur Business Meals\", 0=>\"Concur Business Meals\"}, {\"group\"=>\"Goals Training Sessions\", 0=>\"Goals Training Sessions\"}, {\"group\"=>\"GoogleAppsEA\", 0=>\"GoogleAppsEA\"}, {\"group\"=>\"Concur Users\", 0=>\"Concur Users\"}, {\"group\"=>\"TurnLink User Group\", 0=>\"TurnLink User Group\"}, {\"group\"=>\"Store-Outside Sales\", 0=>\"Store-Outside Sales\"}, {\"group\"=>\"Store-Sales Mailing List Database RW\", 0=>\"Store-Sales Mailing List Database RW\"}, {\"group\"=>\"Store-Accounting MCB Approvals RW\", 0=>\"Store-Accounting MCB Approvals RW\"}, {\"group\"=>\"Outside Sales\", 0=>\"Outside Sales\"}, {\"group\"=>\"Staff-Remote\", 0=>\"Staff-Remote\"}, {\"group\"=>\"Store-Sales\", 0=>\"Store-Sales\"}, {\"group\"=>\"GoogleApps\", 0=>\"GoogleApps\"}]" 
 			pop_groups = groups.map(&:values).flatten.uniq #exercise for the reader. Array of group part of the hash to comma separated string
 
-      csv << [j.title, 'x', pop_email, pop_shoretel, pop_cell, pop_fax, pop_groups]       
+      csv << [j.title, 'x', pop_email, pop_shoretel, pop_cell, pop_fax, pop_desktop, pop_laptop, pop_groups]       
       end
     end
   end
