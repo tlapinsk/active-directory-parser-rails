@@ -38,9 +38,9 @@ See [Gemfile](https://github.com/tlapinsk/rolemapping/blob/master/Gemfile) and [
 
 _Note: I did not test the application on Windows, and I run the following system_
 
-Macbook Pro (15-inch, Mid 2010)
-macOS Sierra | Version 10.12.4
-Memory: 8gb
+Macbook Pro (15-inch, Mid 2010)  
+macOS Sierra | Version 10.12.4  
+Memory: 8gb  
 Storage: 500gb Samsung SSD
 
 ## Configuration
